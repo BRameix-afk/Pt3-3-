@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>SISTEMA DE RECUPERACIÓN - NIVEL CRÍTICO</title>
+    <style>
+        body {
+            font-family: 'Courier New', Courier, monospace; 
+            background-color: #000000; 
+            color: #ffffff; 
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+            overflow: hidden;
+        }
+
+        .terminal {
+            text-align: center;
+            border: 1px solid #444;
+            padding: 50px;
+            width: 450px;
+            box-shadow: 0 0 20px rgba(255, 0, 0, 0.1);
+        }
+
+        h1 {
+            font-size: 1.1em;
+            letter-spacing: 3px;
+            margin-bottom: 30px;
+            color: #ff4444; /* Rojo para indicar peligro/crítico */
+        }
+
+        p {
+            font-size: 1.2em;
+            margin-bottom: 20px;
+        }
+
+        input[type="text"] {
+            background: transparent;
+            border: none;
+            border-bottom: 1px solid #ffffff;
+            color: #ffffff;
+            font-family: 'Courier New', Courier, monospace;
+            font-size: 1.2em;
+            text-align: center;
+            outline: none;
+            width: 100%;
+            margin-bottom: 25px;
+            padding: 10px 0;
+        }
+
+        button {
+            background: #ffffff;
+            color: #000000;
+            border: none;
+            padding: 12px 40px;
+            font-family: 'Courier New', Courier, monospace;
+            font-weight: bold;
+            cursor: pointer;
+            letter-spacing: 2px;
+        }
+
+        #error-msg {
+            margin-top: 20px;
+            font-size: 0.8em;
+            color: #ff0000;
+            display: none;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="terminal">
+        <h1>Fin...</h1>
+        <p>Nombra del lugar</p>
+        <input type="text" id="passInput" placeholder="..." autofocus>
+        <br>
+        <button onclick="checkPass()">IDENTIFICAR</button>
+        <p id="error-msg">LOCALIZACIÓN NO RECONOCIDA</p>
+    </div>
+
+    <script>
+        function checkPass() {
+            const input = document.getElementById("passInput").value.trim().toLowerCase();
+            
+            // Acepta variaciones comunes: Chernobil (ES) o Chernobyl (EN)
+            if (input === "chernobil" || input === "chernobyl") {
+                window.location.href = "https://www.youtube.com/watch?v=j3chM35D970";
+            } else {
+                const error = document.getElementById("error-msg");
+                error.style.display = "block";
+                document.getElementById("passInput").value = "";
+            }
+        }
+
+        // SPAM DE CONSOLA PARA DESPISTAR O AYUDAR
+        for (let i = 0; i < 15; i++) {
+            console.log("%cADVERTENCIA: ZONA DE EXCLUSIÓN", "color: yellow; background: black; font-size: 20px;");
+            console.warn("Error en el reactor... Revisa la historia del lugar.");
+        }
+
+        document.getElementById("passInput").addEventListener("keyup", function(event) {
+            if (event.key === "Enter") checkPass();
+        });
+    </script>
+</body>
+</html>
